@@ -1,0 +1,35 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
+
+    <!-- NOME DA UNIDADE DE PERSISTENCIA -->
+    <persistence-unit name="CidadesDB">
+
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <!-- CLASSES QUE SERÃO PERSISTIDAS -->
+        <class>br.org.fundatec.model.Estado</class>
+        <class>br.org.fundatec.model.Cidade</class>
+
+        <properties>
+            <!-- DRIVER E URL -->
+            <property name="hibernate.connection.driver_class" value="org.h2.Driver"/>
+            <property name="hibernate.connection.url" value="jdbc:h2:tcp://localhost/~/exercicio-jpa2"/>
+
+            <!-- LOGIN NO BANCO -->
+            <property name="hibernate.connection.username" value="sa"/>
+            <property name="hibernate.connection.password" value=""/>
+
+            <!-- QUAL O SQL UTILIZANDO NO JPQL -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+
+            <!-- PARA DEBUG, MOSTRA O SQL UTILIZADO PELO JPA E O FORMATA, RESPECTIVAMENTE -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+
+            <!--             faz update o schema. -->
+            <property name="hbm2ddl.auto" value="validate"/>
+            <!--             cria o schema, destruindo dados anteriores. -->
+<!--                         <property name="hbm2ddl.auto" value="create" /> -->
+            <!--             validar o schema, não faz mudanças no banco de dados. -->
+            <!--             <property name="hbm2ddl.auto" value="validate" /> -->
+        </properties>
+    </persistence-unit>
+</persistence>
